@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-body text-base text-teal-deep;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-sans font-semibold text-teal-deep;
+  }
+}
+
+/* Joya-style card */
+@layer components {
+  .card {
+    @apply rounded-xl border border-neutral-200 bg-white p-6 shadow-card transition-all duration-300;
+  }
+  .card:hover {
+    @apply -translate-y-1 shadow-card-hover;
+  }
+  .card--flat {
+    @apply shadow-none;
+  }
+  .card--flat:hover {
+    @apply shadow-card;
+  }
+
+  /* Primary button (orange gradient like Joya) */
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-full bg-gradient-to-r from-[#f29917] to-[#f6b83f] px-6 py-3 font-medium text-[#fff5ec] shadow-md transition-all duration-200 hover:-translate-y-0.5 hover:from-[#f09612] hover:to-[#f3ae31] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-teal-deep focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-full border border-teal-deep/25 bg-white px-6 py-3 font-medium text-teal-deep transition-all duration-200 hover:border-teal-deep/45 hover:bg-neutral-50 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-teal-deep focus:ring-offset-2 disabled:opacity-50;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center rounded-full px-6 py-3 font-medium text-teal-soft transition-colors hover:bg-teal-wash hover:text-teal-deep focus:outline-none focus:ring-2 focus:ring-teal-deep focus:ring-offset-2;
+  }
+
+  /* Inputs */
+  .input {
+    @apply w-full rounded-lg border border-neutral-300 bg-white px-3 py-2.5 text-teal-deep placeholder-neutral-400 outline-none transition-colors focus:border-teal-soft focus:ring-2 focus:ring-teal-soft/20;
+  }
+  .input-label {
+    @apply mb-1.5 block text-sm font-medium text-teal-deep;
+  }
+}
+
+/* Legacy alias for existing usage */
+.glass-card {
+  @apply card;
+}

@@ -1,0 +1,32 @@
+{
+  "name": "ai-learning-monorepo",
+  "version": "1.0.0",
+  "description": "Learn with us – Monorepo (MERN + Tailwind + Gemini)",
+  "private": true,
+  "engines": {
+    "node": ">=20.10.0",
+    "npm": ">=9.7.2"
+  },
+  "scripts": {
+    "start:backend": "npm run start --workspace ai-backend",
+    "dev:backend": "npm run dev --workspace ai-backend",
+    "start:frontend": "npm run dev --workspace ai-frontend",
+    "build:frontend": "npm run build --workspace ai-frontend",
+    "test:backend": "npm run test --workspace ai-backend",
+    "test": "npm run test:backend",
+    "dev": "concurrently \"npm run dev:backend\" \"npm run start:frontend\""
+  },
+  "workspaces": [
+    "packages/backend",
+    "packages/frontend"
+  ],
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^25.2.0",
+    "concurrently": "^9.2.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  }
+}
