@@ -1,0 +1,25 @@
+# Render Blueprint – deploy backend from Dashboard: New > Blueprint
+# Or create a Web Service manually and use Root Directory + build/start below.
+
+services:
+  - type: web
+    name: ai-backend
+    runtime: node
+    region: oregon
+
+    # Monorepo: run build/start from backend package
+    rootDir: packages/backend
+
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+
+    envVars:
+      - key: NODE_ENV
+        value: production
+      # PORT is set automatically by Render
+      - key: MONGO_URI
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: GEMINI_API_KEY
+        sync: false
