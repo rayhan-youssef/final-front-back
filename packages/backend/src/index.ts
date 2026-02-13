@@ -34,6 +34,14 @@ app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
 const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/ai-learning';
+const isProduction = process.env.NODE_ENV === 'production';
+
+if (isProduction && (!process.env.MONGO_URI || MONGO_URI.includes('localhost'))) {
+  console.error(
+    'In production, set MONGO_URI to your MongoDB Atlas (or other hosted DB) connection string in the Render Environment tab.'
+  );
+  process.exit(1);
+}
 
 async function start() {
   await mongoose.connect(MONGO_URI);
